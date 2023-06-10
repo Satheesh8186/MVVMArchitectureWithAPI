@@ -15,7 +15,7 @@ class UserVm: ObservableObject{
     func fetchUser(){
         isApiFailed = false
         isRefresh = true
-        if let url = URL(string: "https://jsonplaceholder.typicode.com/usersr"){
+        if let url = URL(string: "https://jsonplaceholder.typicode.com/users"){
             URLSession.shared.dataTask(with: url) {[weak self] data, response, error in
                // asyncAfter(deadline: .now() + 1.5 if api is fast Add some timer to check
                 DispatchQueue.main.async {
