@@ -8,14 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var vm = UserVm()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView{
+            ZStack{
+                if(vm.isRefresh){
+                    ProgressView()
+                }else{
+                    List(vm.userData){ userData in
+                        UserView(user: userData)
+                            .listRowSeparator(.hidden)
+                    }.listStyle(.plain)
+                        
+                        .navigationTitle("user")
+                    
+                }
+            }.onAppear(perform: vm.fetchUser)
+            .alert(isPresented: $vm.isApiFailed, error: vm.error, actions: {
+                    
+                    Button("retry") {
+                        vm.fetchUser()
+                    }
+                    
+                })
+            
         }
-        .padding()
     }
 }
 

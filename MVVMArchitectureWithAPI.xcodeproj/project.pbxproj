@@ -14,6 +14,9 @@
 		8057AAA82A350CA6004F6AB1 /* MVVMArchitectureWithAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8057AAA72A350CA6004F6AB1 /* MVVMArchitectureWithAPITests.swift */; };
 		8057AAB22A350CA6004F6AB1 /* MVVMArchitectureWithAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8057AAB12A350CA6004F6AB1 /* MVVMArchitectureWithAPIUITests.swift */; };
 		8057AAB42A350CA6004F6AB1 /* MVVMArchitectureWithAPIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8057AAB32A350CA6004F6AB1 /* MVVMArchitectureWithAPIUITestsLaunchTests.swift */; };
+		8057AAC32A350CF3004F6AB1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8057AAC22A350CF3004F6AB1 /* UserModel.swift */; };
+		8057AAC52A350DC4004F6AB1 /* UserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8057AAC42A350DC4004F6AB1 /* UserVM.swift */; };
+		8057AAC82A3513E9004F6AB1 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8057AAC72A3513E9004F6AB1 /* UserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		8057AAAD2A350CA6004F6AB1 /* MVVMArchitectureWithAPIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVVMArchitectureWithAPIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8057AAB12A350CA6004F6AB1 /* MVVMArchitectureWithAPIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMArchitectureWithAPIUITests.swift; sourceTree = "<group>"; };
 		8057AAB32A350CA6004F6AB1 /* MVVMArchitectureWithAPIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMArchitectureWithAPIUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8057AAC22A350CF3004F6AB1 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		8057AAC42A350DC4004F6AB1 /* UserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVM.swift; sourceTree = "<group>"; };
+		8057AAC72A3513E9004F6AB1 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,9 @@
 		8057AA952A350CA5004F6AB1 /* MVVMArchitectureWithAPI */ = {
 			isa = PBXGroup;
 			children = (
+				8057AAC62A3513C6004F6AB1 /* CoustomViews */,
+				8057AAC12A350CD6004F6AB1 /* ViewModel */,
+				8057AAC02A350CCD004F6AB1 /* Model */,
 				8057AA962A350CA5004F6AB1 /* MVVMArchitectureWithAPIApp.swift */,
 				8057AA982A350CA5004F6AB1 /* ContentView.swift */,
 				8057AA9A2A350CA6004F6AB1 /* Assets.xcassets */,
@@ -125,6 +134,30 @@
 				8057AAB32A350CA6004F6AB1 /* MVVMArchitectureWithAPIUITestsLaunchTests.swift */,
 			);
 			path = MVVMArchitectureWithAPIUITests;
+			sourceTree = "<group>";
+		};
+		8057AAC02A350CCD004F6AB1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8057AAC22A350CF3004F6AB1 /* UserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8057AAC12A350CD6004F6AB1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8057AAC42A350DC4004F6AB1 /* UserVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8057AAC62A3513C6004F6AB1 /* CoustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				8057AAC72A3513E9004F6AB1 /* UserView.swift */,
+			);
+			path = CoustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +291,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8057AA992A350CA5004F6AB1 /* ContentView.swift in Sources */,
+				8057AAC52A350DC4004F6AB1 /* UserVM.swift in Sources */,
+				8057AAC82A3513E9004F6AB1 /* UserView.swift in Sources */,
+				8057AAC32A350CF3004F6AB1 /* UserModel.swift in Sources */,
 				8057AA972A350CA5004F6AB1 /* MVVMArchitectureWithAPIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
