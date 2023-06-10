@@ -16,7 +16,7 @@ class UserVm: ObservableObject{
         isRefresh = true
         if let url = URL(string: "https://jsonplaceholder.typicode.com/usersr"){
             URLSession.shared.dataTask(with: url) {[weak self] data, response, error in
-               // asyncAfter(deadline: .now() + 2.5 if api is fast to check progress
+               // asyncAfter(deadline: .now() + 1.5 if api is fast Add some timer to check
                 DispatchQueue.main.async {
                     if let error = error{
                         self?.isApiFailed = true
