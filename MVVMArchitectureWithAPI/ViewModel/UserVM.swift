@@ -11,6 +11,7 @@ class UserVm: ObservableObject{
     @Published var isApiFailed = false
     @Published var error : UserError?
     @Published private(set) var isRefresh = false
+    private var canc = Set<AnyCancellable>()
     func fetchUser(){
         isApiFailed = false
         isRefresh = true
@@ -37,6 +38,32 @@ class UserVm: ObservableObject{
             }.resume()
         }
     }
+
+        func fetchUsers()   {
+        let urlString = "https://jsonplaceholder.typicode.com/users"
+        guard let url = URL(string: urlString)  else {
+          print("url not correcct")
+            return
+        }
+        
+        URLSession
+            .shared
+            .dataTaskPublisher(for: url)
+            .receive(on: DispatchQueue.main)
+            .map(\.data)
+            .decode(type: [User].self, decoder: JSONDecoder())
+            .sink {[weak self] res in
+                switch res {
+                case .failure(let error):
+                    self?.error = userError.custom(error: error)
+                default: break
+                }
+            } receiveValue: { [weak self] users in
+                print("users",users)
+                self?.user = users
+            }.store(in: &canc)
+    }
+}
 }
 extension UserVm{
     enum UserError: LocalizedError {
