@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 class UserVm: ObservableObject{
     @Published  var userData = [UserModel]()
     @Published var isApiFailed = false
@@ -17,7 +18,7 @@ class UserVm: ObservableObject{
         isRefresh = true
         if let url = URL(string: "https://jsonplaceholder.typicode.com/users"){
             URLSession.shared.dataTask(with: url) {[weak self] data, response, error in
-               // asyncAfter(deadline: .now() + 1.5 if api is fast Add some timer to check
+                // asyncAfter(deadline: .now() + 1.5 if api is fast Add some timer to check
                 DispatchQueue.main.async {
                     if let error = error{
                         self?.isApiFailed = true
@@ -34,15 +35,15 @@ class UserVm: ObservableObject{
                     }
                     self?.isRefresh = false
                 }
-               
+                
             }.resume()
         }
     }
-
-        func fetchUsers()   {
+    
+    func fetchUsersUsingCombine()   {
         let urlString = "https://jsonplaceholder.typicode.com/users"
         guard let url = URL(string: urlString)  else {
-          print("url not correcct")
+            print("url not correcct")
             return
         }
         
@@ -51,20 +52,20 @@ class UserVm: ObservableObject{
             .dataTaskPublisher(for: url)
             .receive(on: DispatchQueue.main)
             .map(\.data)
-            .decode(type: [User].self, decoder: JSONDecoder())
+            .decode(type: [UserModel].self, decoder: JSONDecoder())
             .sink {[weak self] res in
                 switch res {
                 case .failure(let error):
-                    self?.error = userError.custom(error: error)
+                    self?.error = UserError.custom(error: error)
                 default: break
                 }
             } receiveValue: { [weak self] users in
                 print("users",users)
-                self?.user = users
+                self?.userData = users
             }.store(in: &canc)
     }
 }
-}
+
 extension UserVm{
     enum UserError: LocalizedError {
         case custom(error: Error)
